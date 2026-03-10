@@ -148,6 +148,304 @@
   }
   .tab-item.active .tab-icon { background: var(--brand-red); color: #fff; border-radius: 8px; }
 
+  /* Floating assistant button */
+  .uu-helper-fab {
+    position: absolute;
+    bottom: 185px;
+    right: 14px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #C8102E 0%, #9B0C23 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+    box-shadow: 0 6px 24px rgba(200,16,46,0.5), 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.15);
+    transition: transform 0.18s ease;
+    border: 2px solid rgba(255,215,0,0.35);
+  }
+  .uu-helper-fab:active { transform: scale(0.92); }
+  .uu-helper-fab .fab-icon { display: flex; align-items: center; justify-content: center; }
+  .uu-helper-fab .fab-tooltip {
+    position: absolute;
+    right: 68px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--surface2);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    border: 1px solid var(--hairline);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* Chat assistant panel */
+  .chat-panel-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 11;
+  }
+  .chat-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface2);
+    border-radius: 24px 24px 0 0;
+    z-index: 12;
+    max-height: 85%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-bottom: 24px;
+  }
+  .chat-panel::-webkit-scrollbar { display: none; }
+  .chat-handle {
+    width: 36px;
+    height: 5px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.2);
+    margin: 10px auto 0;
+  }
+  .chat-header {
+    padding: 14px 20px 6px;
+    text-align: center;
+  }
+  .chat-header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .chat-header-sub {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  /* Chat bubbles — USER on LEFT, AI on RIGHT */
+  .chat-bubble {
+    max-width: 82%;
+    padding: 12px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 16px 10px;
+  }
+  .chat-bubble.user {
+    background: var(--surface1);
+    border: 1px solid var(--hairline);
+    color: var(--text-primary);
+    border-bottom-left-radius: 6px;
+    margin-right: auto;
+    margin-left: 16px;
+  }
+  .chat-bubble.assistant {
+    background: #1A1A25;
+    border: 1px solid rgba(200,16,46,0.15);
+    color: var(--text-primary);
+    border-bottom-right-radius: 6px;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+
+  /* Chat composer */
+  .chat-composer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px 24px;
+    border-top: 1px solid var(--hairline);
+    background: var(--surface2);
+  }
+  .chat-composer-input {
+    flex: 1;
+    background: var(--surface1);
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    padding: 11px 16px;
+    font-size: 14px;
+    color: var(--text-primary);
+    outline: none;
+  }
+  .chat-composer-input::placeholder { color: var(--text-tertiary); }
+  .chat-send-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--brand-red);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px var(--brand-red-glow);
+  }
+  .chat-send-btn svg { fill: #fff; }
+
+  /* Chat close button */
+  .chat-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  /* Full-screen chat (not bottom sheet) */
+  .chat-fullscreen {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-fs-header {
+    padding: 50px 16px 12px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--hairline);
+    text-align: center;
+    position: relative;
+  }
+  .chat-fs-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 0 8px;
+    scrollbar-width: none;
+  }
+  .chat-fs-body::-webkit-scrollbar { display: none; }
+
+  /* Typing indicator label */
+  .chat-label-typed {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin: 2px 16px 6px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .chat-label-typed.right { text-align: right; margin-right: 16px; }
+
+  /* Suggested question chips */
+  .chip-grid {
+    padding: 8px 16px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip-q {
+    padding: 10px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    line-height: 1.3;
+  }
+  .chip-q:active { transform: scale(0.96); }
+
+  /* Action buttons inside chat */
+  .chat-action-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--brand-red);
+    color: #fff;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 16px var(--brand-red-glow);
+    margin-top: 8px;
+  }
+  .chat-action-secondary {
+    display: inline-block;
+    padding: 9px 18px;
+    background: transparent;
+    color: var(--brand-red);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    margin-left: 6px;
+  }
+
+  /* Restroom option rows */
+  .restroom-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: var(--surface2);
+    border: 2px solid var(--hairline);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .restroom-option:active { transform: scale(0.98); }
+  .restroom-option.selected {
+    border-color: var(--brand-red);
+    background: rgba(200,16,46,0.08);
+  }
+  .restroom-option .ro-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .restroom-option .ro-sub { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+  .restroom-option .ro-check {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid var(--hairline);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: transparent;
+    flex-shrink: 0; transition: all 0.18s ease;
+  }
+  .restroom-option.selected .ro-check {
+    background: var(--brand-red); border-color: var(--brand-red); color: #fff;
+  }
+
+  /* Landmark picker buttons */
+  .landmark-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 8px;
+    background: var(--surface2);
+    border: 2px solid var(--hairline);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-height: 80px;
+    text-align: center;
+  }
+  .landmark-btn:active { transform: scale(0.96); }
+  .landmark-btn.selected {
+    border-color: var(--brand-red);
+    background: rgba(200,16,46,0.1);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 1px var(--brand-red), 0 4px 16px rgba(200,16,46,0.2);
+  }
+
   /* Common elements */
   .large-title {
     font-size: 34px;
@@ -397,7 +695,9 @@
   .essentials-row {
     display: flex;
     justify-content: space-around;
-    padding: 0 20px;
+    padding: 0 12px;
+    flex-wrap: wrap;
+    gap: 12px 0;
   }
   .essential-item {
     display: flex;
@@ -922,13 +1222,138 @@
     color: var(--text-secondary);
     line-height: 1.5;
   }
+
+  /* ========== FLOW / DEMO MODE ========== */
+  body.flow-mode {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+  }
+
+  body.flow-mode .page-title,
+  body.flow-mode .page-subtitle,
+  body.flow-mode .page-dev,
+  body.flow-mode .page-footer-note { display: none; }
+
+  body.flow-mode #flow-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 375px;
+    padding: 18px 4px 10px;
+  }
+
+  #flow-header { display: none; }
+
+  #flow-screen-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+
+  #flow-screen-counter {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    letter-spacing: 0.5px;
+  }
+
+  body.flow-mode .screen-grid {
+    position: relative;
+    width: 375px;
+    height: 812px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    gap: 0;
+    justify-content: flex-start;
+    border-radius: 44px;
+    border: 3px solid rgba(255,255,255,0.10);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+    margin-bottom: 0;
+  }
+
+  body.flow-mode .screen-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 812px;
+    overflow: hidden;
+    gap: 0;
+    flex-direction: column;
+    transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  body.flow-mode .screen-label { display: none; }
+
+  body.flow-mode .phone-frame {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    width: 375px;
+    height: 812px;
+  }
+
+  /* Progress dots */
+  #flow-dots {
+    display: none;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 14px;
+  }
+  body.flow-mode #flow-dots { display: flex; }
+
+  .flow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: background 0.25s, transform 0.25s;
+    flex-shrink: 0;
+  }
+  .flow-dot.active {
+    background: var(--brand-red);
+    transform: scale(1.3);
+  }
+
+  /* Toggle button */
+  #view-toggle {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    padding: 10px 16px;
+    background: rgba(30,30,36,0.9);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    letter-spacing: 0.3px;
+  }
+  #view-toggle:hover { background: rgba(50,50,60,0.95); }
 </style>
 </head>
 <body>
 
 <div class="page-title">CSUEB 15 iOS Mockups</div>
 <div class="page-subtitle" style="margin-bottom:6px;">University Union Hub</div>
-<div style="text-align:center; font-size:13px; color:var(--text-tertiary); font-family:'Inter',sans-serif; letter-spacing:0.3px; padding-bottom:8px;">Developed by Nikhil Chowdary Nettem &mdash; Senator at Large, ASI</div>
+<div class="page-dev" style="text-align:center; font-size:13px; color:var(--text-tertiary); font-family:'Inter',sans-serif; letter-spacing:0.3px; padding-bottom:8px;">Developed by Nikhil Chowdary Nettem &mdash; Senator at Large, ASI</div>
+
+<!-- Flow mode header (hidden in grid mode) -->
+<div id="flow-header">
+  <span id="flow-screen-label">Welcome</span>
+  <span id="flow-screen-counter">1 / 16</span>
+</div>
 
 <div class="screen-grid">
 
@@ -1060,7 +1485,9 @@
     <div class="large-title">Today</div>
     <div style="padding:4px 20px 12px; display:flex; align-items:center; gap:10px;">
       <div class="pill pill-green">OPEN NOW</div>
-      <span style="font-size:14px; color:var(--text-secondary);">North UU &bull; South UU</span>
+      <span onclick="if(flowMode) goToScreen(4)" style="font-size:14px; color:var(--text-secondary); cursor:pointer; text-decoration:underline; text-decoration-color:rgba(255,255,255,0.2);">North UU</span>
+      <span style="font-size:14px; color:var(--text-tertiary);">&bull;</span>
+      <span onclick="if(flowMode) goToScreen(5)" style="font-size:14px; color:var(--text-secondary); cursor:pointer; text-decoration:underline; text-decoration-color:rgba(255,255,255,0.2);">South UU</span>
     </div>
 
     <div class="section-header">What's happening today</div>
@@ -1076,23 +1503,23 @@
 
     <div class="section-header">Quick Actions</div>
     <div class="quick-grid" style="margin-bottom:16px;">
-      <div class="quick-item">
+      <div class="quick-item" onclick="if(flowMode) goToScreen(4)" style="cursor:pointer;">
         <div class="qi-icon">&#127963;</div>
         <div class="qi-label">Explore North</div>
       </div>
-      <div class="quick-item">
+      <div class="quick-item" onclick="if(flowMode) goToScreen(5)" style="cursor:pointer;">
         <div class="qi-icon">&#127962;</div>
         <div class="qi-label">Explore South</div>
       </div>
-      <div class="quick-item">
+      <div class="quick-item" onclick="if(flowMode) goToScreen(9)" style="cursor:pointer;">
         <div class="qi-icon" style="color:var(--brand-red);">&#128197;</div>
         <div class="qi-label">Book Space</div>
       </div>
-      <div class="quick-item">
+      <div class="quick-item" onclick="if(flowMode) goToScreen(12)" style="cursor:pointer;">
         <div class="qi-icon">&#127918;</div>
         <div class="qi-label">GameZone</div>
       </div>
-      <div class="quick-item">
+      <div class="quick-item" style="cursor:pointer;">
         <div class="qi-icon">&#127828;</div>
         <div class="qi-label">Dining</div>
       </div>
@@ -1100,23 +1527,88 @@
 
     <div class="section-header">UU Essentials</div>
     <div class="essentials-row" style="margin-bottom:24px;">
-      <div class="essential-item">
+      <div class="essential-item" data-nav-screen="16" style="cursor:pointer;">
         <div class="ei-icon">&#9889;</div>
         <div class="ei-label">Charging</div>
       </div>
-      <div class="essential-item">
+      <div class="essential-item" data-nav-screen="16" style="cursor:pointer;">
         <div class="ei-icon">&#128167;</div>
         <div class="ei-label">Water Refill</div>
       </div>
-      <div class="essential-item">
+      <div class="essential-item" data-nav-screen="16" style="cursor:pointer;">
         <div class="ei-icon">&#9832;</div>
         <div class="ei-label">Microwaves</div>
       </div>
-      <div class="essential-item">
+      <div class="essential-item" data-nav-screen="16" style="cursor:pointer;">
         <div class="ei-icon">&#128424;</div>
         <div class="ei-label">Printers</div>
       </div>
+      <div class="essential-item" data-nav-screen="20" style="cursor:pointer;">
+        <div class="ei-icon">&#128699;</div>
+        <div class="ei-label">Restrooms</div>
+      </div>
     </div>
+  </div>
+
+  <!-- Floating assistant button — CSUEB Pioneer Bird Mascot -->
+  <div class="uu-helper-fab" data-nav-screen="21" style="cursor:pointer;">
+    <div class="fab-icon">
+      <!--
+        Bust portrait of the CSUEB Pioneer bird mascot:
+        black feathered head, red beak, white eye + black mask stripe,
+        red jersey chest with a 4-pointed star, small chat bubble badge.
+      -->
+      <svg width="34" height="34" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ── NECK / CHEST (red jersey) ── -->
+        <path d="M18 56 Q18 44 32 42 Q46 44 46 56 Z" fill="#C8102E"/>
+        <!-- Jersey white chest panel -->
+        <path d="M25 56 Q25 47 32 46 Q39 47 39 56 Z" fill="#fff" opacity="0.15"/>
+        <!-- 4-pointed star on jersey -->
+        <path d="M32 47 L33.2 50.8 L37 50.8 L34 53.2 L35.2 57 L32 54.8 L28.8 57 L30 53.2 L27 50.8 L30.8 50.8 Z" fill="#fff" opacity="0.9"/>
+
+        <!-- ── HEAD (black feathers) ── -->
+        <ellipse cx="32" cy="28" rx="16" ry="17" fill="#1A1A1A"/>
+        <!-- Head highlight / feather sheen -->
+        <ellipse cx="27" cy="20" rx="5" ry="7" fill="#2E2E2E" opacity="0.6"/>
+
+        <!-- ── CREST feathers on top ── -->
+        <path d="M32 11 Q29 5 26 4 Q28 9 27 12" fill="#1A1A1A"/>
+        <path d="M32 11 Q32 4 30 2 Q31 7 30 11" fill="#252525"/>
+        <path d="M32 11 Q35 5 38 4 Q36 9 37 12" fill="#C8102E"/>
+
+        <!-- ── WHITE EYE BASE (large, expressive) ── -->
+        <ellipse cx="35" cy="27" rx="9" ry="9.5" fill="#fff"/>
+        <!-- Black mask stripe across eye area -->
+        <path d="M22 24 Q29 21 44 24 Q44 29 38 30 Q35 31 32 30 Q26 30 22 28 Z" fill="#1A1A1A"/>
+        <!-- White eye re-revealed inside mask -->
+        <ellipse cx="35" cy="27" rx="7" ry="7.5" fill="#fff"/>
+        <!-- Iris -->
+        <circle cx="35" cy="27" r="4.5" fill="#1A1A1A"/>
+        <!-- Pupil shine -->
+        <circle cx="36.5" cy="25.5" r="1.8" fill="#fff"/>
+        <circle cx="33.5" cy="29" r="0.8" fill="#fff" opacity="0.4"/>
+
+        <!-- ── RED BEAK ── -->
+        <!-- Upper beak -->
+        <path d="M24 32 Q20 36 19 40 Q23 38 27 37 Q28 34 26 32 Z" fill="#C8102E"/>
+        <!-- Lower beak -->
+        <path d="M24 34 Q21 38 20 41 Q23 40 26 39 Q27 37 25 34 Z" fill="#A50D26"/>
+        <!-- Beak highlight -->
+        <path d="M22 34 Q20.5 36 20 38" stroke="#E84060" stroke-width="0.8" fill="none" opacity="0.6" stroke-linecap="round"/>
+
+        <!-- ── SMALL CHAT BUBBLE BADGE (bottom-right) ── -->
+        <g transform="translate(43, 41)">
+          <rect x="0" y="0" width="16" height="11" rx="5.5" fill="#FFD700"/>
+          <polygon points="3,11 7,11 2,16" fill="#FFD700"/>
+          <circle cx="5"  cy="5.5" r="1.5" fill="#C8102E"/>
+          <circle cx="8"  cy="5.5" r="1.5" fill="#C8102E"/>
+          <circle cx="11" cy="5.5" r="1.5" fill="#C8102E"/>
+        </g>
+
+      </svg>
+    </div>
+    <div class="fab-tooltip">UU Helper</div>
   </div>
 
   <div class="tab-bar">
@@ -1750,7 +2242,7 @@
     </div>
 
     <!-- Two big building cards -->
-    <div style="margin:8px 20px 12px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg, #1a1520, #2a1a30); padding:18px; border:1px solid var(--hairline); display:flex; align-items:center; gap:14px;">
+    <div onclick="if(flowMode) goToScreen(4)" style="margin:8px 20px 12px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg, #1a1520, #2a1a30); padding:18px; border:1px solid var(--hairline); display:flex; align-items:center; gap:14px; cursor:pointer;">
       <div style="font-size:36px;">&#127963;</div>
       <div style="flex:1;">
         <div style="font-size:17px; font-weight:700;">North University Union</div>
@@ -1758,7 +2250,7 @@
       </div>
       <span style="font-size:20px; color:var(--text-tertiary);">&rsaquo;</span>
     </div>
-    <div style="margin:0 20px 16px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg, #0a1a2a, #152a4a); padding:18px; border:1px solid var(--hairline); display:flex; align-items:center; gap:14px;">
+    <div onclick="if(flowMode) goToScreen(5)" style="margin:0 20px 16px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg, #0a1a2a, #152a4a); padding:18px; border:1px solid var(--hairline); display:flex; align-items:center; gap:14px; cursor:pointer;">
       <div style="font-size:36px;">&#127962;</div>
       <div style="flex:1;">
         <div style="font-size:17px; font-weight:700;">South University Union</div>
@@ -1869,7 +2361,7 @@
     </div>
 
     <div class="section-header">Featured</div>
-    <div class="event-card-lg">
+    <div class="event-card-lg" onclick="if(flowMode) goToScreen(8)" style="cursor:pointer;">
       <div class="ec-img" style="height:160px; background: none; overflow:hidden;">
         <img src="gamezone/casino-night-2026-website-banner.jpg" alt="Casino Night" style="width:100%; height:100%; object-fit:cover;">
       </div>
@@ -2092,7 +2584,7 @@
     <div style="height:16px;"></div>
 
     <div class="card">
-      <div class="list-row" style="padding:18px 20px;">
+      <div class="list-row" onclick="if(flowMode) goToScreen(11)" style="padding:18px 20px; cursor:pointer;">
         <div class="row-icon" style="font-size:18px; background:rgba(200,16,46,0.12);">&#127963;</div>
         <div class="row-text">
           <div class="row-title" style="font-size:17px; font-weight:600;">Meeting Rooms</div>
@@ -2100,7 +2592,7 @@
         </div>
         <div class="chevron" style="font-size:20px;">&rsaquo;</div>
       </div>
-      <div class="list-row" style="padding:18px 20px;">
+      <div class="list-row" onclick="if(flowMode) goToScreen(10)" style="padding:18px 20px; cursor:pointer;">
         <div class="row-icon" style="font-size:18px; background:rgba(48,209,88,0.12);">&#127917;</div>
         <div class="row-text">
           <div class="row-title" style="font-size:17px; font-weight:600;">Event Spaces</div>
@@ -3198,11 +3690,813 @@
 </div>
 </div>
 
+<!-- ==================== SCREEN 17: AMENITY DETAIL (WATER REFILL) ==================== -->
+<div class="screen-wrapper">
+<div class="screen-label">Screen 17 &mdash; Water Refill (N1)</div>
+<div class="phone-frame">
+  <div class="screen-content">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="icons"><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></div>
+    </div>
+    <div style="padding:8px 20px 0;">
+      <span class="back-nav" style="font-size:17px; color:var(--brand-red); cursor:pointer;">&lsaquo; Back</span>
+    </div>
+    <div class="large-title" style="padding-top:12px;">Water Refill</div>
+    <div style="padding:8px 20px 16px; display:flex; gap:8px;">
+      <div class="pill pill-surface">North UU</div>
+      <div class="pill pill-surface">Amenity</div>
+    </div>
+    <div style="padding:0 20px 20px; color:var(--text-secondary); font-size:15px; line-height:1.5;">
+      Refill station inside North UU. Located on the ground floor near the main entrance. Filtered water available for bottles and cups.
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <div style="padding:16px; display:flex; align-items:center; gap:12px;">
+        <div style="width:40px; height:40px; border-radius:10px; background:rgba(200,16,46,0.12); display:flex; align-items:center; justify-content:center; font-size:20px;">&#128167;</div>
+        <div>
+          <div style="font-weight:600; font-size:15px;">Ground Floor &bull; North UU</div>
+          <div style="font-size:13px; color:var(--text-tertiary);">Near The Market entrance</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-red" data-nav-screen="17" style="cursor:pointer;">Take Me There</button>
+
+    <div style="padding:8px 20px; display:flex; justify-content:space-between;">
+      <span style="font-size:14px; color:var(--brand-red); cursor:pointer;">View on floor</span>
+      <span style="font-size:14px; color:var(--text-tertiary); cursor:pointer;">Report incorrect info</span>
+    </div>
+
+    <div style="height:40px;"></div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab-item active">
+      <div class="tab-icon">T</div>
+      <span>Today</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">E</div>
+      <span>Explore</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">V</div>
+      <span>Events</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">B</div>
+      <span>Book</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">M</div>
+      <span>More</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SCREEN 18: LANDMARK PICKER ==================== -->
+<div class="screen-wrapper">
+<div class="screen-label">Screen 18 &mdash; Landmark Picker (N2)</div>
+<div class="phone-frame">
+  <div class="screen-content">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="icons"><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></div>
+    </div>
+    <div style="padding:8px 20px 0;">
+      <span class="back-nav" style="font-size:17px; color:var(--brand-red); cursor:pointer;">&lsaquo; Back</span>
+    </div>
+    <div class="large-title" style="padding-top:12px;">What do you see near you?</div>
+    <div style="padding:4px 20px 16px; color:var(--text-secondary); font-size:15px; line-height:1.45;">
+      Pick the closest landmark so we can guide you.
+    </div>
+
+    <!-- Search bar (visual only) -->
+    <div style="margin:0 20px 16px; background:var(--surface2); border-radius:12px; padding:12px 16px; display:flex; align-items:center; gap:10px; border:1px solid var(--hairline);">
+      <span style="color:var(--text-tertiary); font-size:15px;">&#128269;</span>
+      <span style="color:var(--text-tertiary); font-size:15px;">Search landmarks…</span>
+    </div>
+
+    <!-- Landmark grid -->
+    <div id="landmark-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 20px 20px;">
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#127970;</span>
+        <span>ASI Offices</span>
+      </div>
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#128311;</span>
+        <span>Elevator Lobby</span>
+      </div>
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#128699;</span>
+        <span>Restrooms</span>
+      </div>
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#127918;</span>
+        <span>GameZone</span>
+      </div>
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#127789;</span>
+        <span>Wild Blue</span>
+      </div>
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#127790;</span>
+        <span>Taco Bell Express</span>
+      </div>
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#128218;</span>
+        <span>Study Lounge</span>
+      </div>
+      <div class="landmark-btn" onclick="selectLandmark(this)">
+        <span style="font-size:18px;">&#128187;</span>
+        <span>Customer Service Desk</span>
+      </div>
+    </div>
+
+    <button id="start-directions-btn" class="btn-red" data-nav-screen="18" style="opacity:0.4; pointer-events:none; cursor:default;">Start Directions</button>
+
+    <div style="height:40px;"></div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab-item active">
+      <div class="tab-icon">T</div>
+      <span>Today</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">E</div>
+      <span>Explore</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">V</div>
+      <span>Events</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">B</div>
+      <span>Book</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">M</div>
+      <span>More</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SCREEN 19: INDOOR DIRECTIONS STEP 1 ==================== -->
+<div class="screen-wrapper">
+<div class="screen-label">Screen 19 &mdash; Directions Step 1 (N3)</div>
+<div class="phone-frame">
+  <div class="screen-content">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="icons"><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></div>
+    </div>
+    <div style="padding:8px 20px 0;">
+      <span class="back-nav" style="font-size:17px; color:var(--brand-red); cursor:pointer;">&lsaquo; Back</span>
+    </div>
+
+    <!-- Direction card -->
+    <div class="card" style="margin-top:12px;">
+      <div style="padding:16px 16px 12px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--hairline);">
+        <div style="font-size:17px; font-weight:700;">Indoor Directions <span style="color:var(--text-tertiary); font-weight:500;">(Step 1 of 2)</span></div>
+        <div class="pill pill-surface" style="font-size:11px;">NUU — Ground Floor</div>
+      </div>
+      <div style="padding:16px;">
+        <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--brand-red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">1</div>
+          <div style="font-size:15px; line-height:1.45; color:var(--text-primary); padding-top:3px;">Walk straight.</div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--brand-red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">2</div>
+          <div style="font-size:15px; line-height:1.45; color:var(--text-primary); padding-top:3px;">Take the left.</div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--brand-red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">3</div>
+          <div style="font-size:15px; line-height:1.45; color:var(--text-primary); padding-top:3px;">Take the left again — you'll see the stairs.</div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--brand-red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">4</div>
+          <div style="font-size:15px; line-height:1.45; color:var(--text-primary); padding-top:3px;">Go down the stairs.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map card -->
+    <div class="card" style="margin-top:4px;">
+      <div style="padding:12px 16px; border-bottom:1px solid var(--hairline);">
+        <div style="font-size:14px; font-weight:600; color:var(--text-secondary);">NUU — Ground Floor</div>
+      </div>
+      <div style="position:relative; height:220px; background:#1a1a24; overflow:hidden;">
+        <img src="maps/Map1.png" alt="NUU Ground Floor Map" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+
+    <button class="btn-red" data-nav-screen="19" style="margin-top:16px; cursor:pointer;">Continue to Step 2 ›</button>
+
+    <div style="height:40px;"></div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab-item active">
+      <div class="tab-icon">T</div>
+      <span>Today</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">E</div>
+      <span>Explore</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">V</div>
+      <span>Events</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">B</div>
+      <span>Book</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">M</div>
+      <span>More</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SCREEN 20: INDOOR DIRECTIONS STEP 2 ==================== -->
+<div class="screen-wrapper">
+<div class="screen-label">Screen 20 &mdash; Directions Step 2 (N4)</div>
+<div class="phone-frame">
+  <div class="screen-content">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="icons"><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></div>
+    </div>
+    <div style="padding:8px 20px 0;">
+      <span class="back-nav" style="font-size:17px; color:var(--brand-red); cursor:pointer;">&lsaquo; Back</span>
+    </div>
+
+    <!-- Floor pill banner -->
+    <div style="margin:12px 20px 8px; text-align:center;">
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:100px; background:rgba(200,16,46,0.12); border:1px solid rgba(200,16,46,0.25);">
+        <span style="font-size:13px; font-weight:600; color:var(--brand-red);">Floor 1</span>
+        <span style="font-size:13px; color:var(--text-secondary);">— You are now on Floor 1</span>
+      </div>
+    </div>
+
+    <!-- Direction card -->
+    <div class="card" style="margin-top:8px;">
+      <div style="padding:16px 16px 12px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--hairline);">
+        <div style="font-size:17px; font-weight:700;">Indoor Directions <span style="color:var(--text-tertiary); font-weight:500;">(Step 2 of 2)</span></div>
+        <div class="pill pill-surface" style="font-size:11px;">NUU — Floor 1</div>
+      </div>
+      <div style="padding:16px;">
+        <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--brand-red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">5</div>
+          <div style="font-size:15px; line-height:1.45; color:var(--text-primary); padding-top:3px;">Turn right and walk past Angelica's.</div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--brand-red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">6</div>
+          <div style="font-size:15px; line-height:1.45; color:var(--text-primary); padding-top:3px;">Take a left when you see Wild Blue.</div>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--brand-red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;">7</div>
+          <div style="font-size:15px; line-height:1.45; color:var(--text-primary); padding-top:3px;">Walk straight — it's on your right.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map card -->
+    <div class="card" style="margin-top:4px;">
+      <div style="padding:12px 16px; border-bottom:1px solid var(--hairline);">
+        <div style="font-size:14px; font-weight:600; color:var(--text-secondary);">NUU — Floor 1</div>
+      </div>
+      <div style="position:relative; height:220px; background:#1a1a24; overflow:hidden;">
+        <img src="maps/Map2.png" alt="NUU Floor 1 Map" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+
+    <!-- Arrived banner -->
+    <div style="margin:16px 20px; background:rgba(29,185,84,0.12); border:1px solid rgba(29,185,84,0.3); border-radius:16px; padding:16px 20px; text-align:center;">
+      <div style="font-size:17px; font-weight:700; color:#1DB954; margin-bottom:4px;">&#10003; Arrived!</div>
+      <div style="font-size:13px; color:var(--text-secondary);">You've reached your destination</div>
+    </div>
+
+    <div style="height:40px;"></div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab-item active">
+      <div class="tab-icon">T</div>
+      <span>Today</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">E</div>
+      <span>Explore</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">V</div>
+      <span>Events</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">B</div>
+      <span>Book</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">M</div>
+      <span>More</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SCREEN 21: RESTROOMS AMENITY DETAIL ==================== -->
+<div class="screen-wrapper">
+<div class="screen-label">Screen 21 &mdash; Restrooms (N5)</div>
+<div class="phone-frame">
+  <div class="screen-content">
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <div class="icons"><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></div>
+    </div>
+    <div style="padding:8px 20px 0;">
+      <span class="back-nav" style="font-size:17px; color:var(--brand-red); cursor:pointer;">&lsaquo; Back</span>
+    </div>
+    <div class="large-title" style="padding-top:12px;">Restrooms</div>
+    <div style="padding:8px 20px 14px; display:flex; gap:8px;">
+      <div class="pill pill-surface">NUU &amp; SUU</div>
+      <div class="pill pill-surface">Amenity</div>
+    </div>
+    <div style="padding:0 20px 20px; color:var(--text-secondary); font-size:15px; line-height:1.55;">
+      Restrooms are available on every floor in both North UU and South UU — <strong style="color:var(--text-primary);">4 locations total</strong>. Select a floor below and we'll take you to the nearest one.
+    </div>
+
+    <!-- Restroom selector -->
+    <div style="padding:0 20px 4px;">
+      <div style="font-size:13px; font-weight:600; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Select a restroom</div>
+      <div id="restroom-options" style="display:flex; flex-direction:column; gap:10px;">
+
+        <div class="restroom-option" onclick="selectRestroom(this)">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div style="width:38px; height:38px; border-radius:10px; background:rgba(200,16,46,0.10); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">&#128699;</div>
+            <div>
+              <div class="ro-title">NUU — Ground Floor</div>
+              <div class="ro-sub">Near The Market entrance</div>
+            </div>
+          </div>
+          <div class="ro-check">&#10003;</div>
+        </div>
+
+        <div class="restroom-option" onclick="selectRestroom(this)">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div style="width:38px; height:38px; border-radius:10px; background:rgba(200,16,46,0.10); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">&#128699;</div>
+            <div>
+              <div class="ro-title">NUU — Floor 2</div>
+              <div class="ro-sub">Adjacent to Study Lounge</div>
+            </div>
+          </div>
+          <div class="ro-check">&#10003;</div>
+        </div>
+
+        <div class="restroom-option" onclick="selectRestroom(this)">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div style="width:38px; height:38px; border-radius:10px; background:rgba(200,16,46,0.10); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">&#128699;</div>
+            <div>
+              <div class="ro-title">NUU — Floor 3</div>
+              <div class="ro-sub">Near ASI Suite</div>
+            </div>
+          </div>
+          <div class="ro-check">&#10003;</div>
+        </div>
+
+        <div class="restroom-option" onclick="selectRestroom(this)">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div style="width:38px; height:38px; border-radius:10px; background:rgba(200,16,46,0.10); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">&#128699;</div>
+            <div>
+              <div class="ro-title">SUU — Floor 1</div>
+              <div class="ro-sub">Main level, near entrance</div>
+            </div>
+          </div>
+          <div class="ro-check">&#10003;</div>
+        </div>
+
+      </div>
+    </div>
+
+    <button id="restroom-take-me-btn" class="btn-red" data-nav-screen="17" style="opacity:0.4; pointer-events:none; cursor:default; margin-top:24px;">Take Me There</button>
+
+    <div style="padding:8px 20px; display:flex; justify-content:center;">
+      <span style="font-size:14px; color:var(--text-tertiary); cursor:pointer;">Report incorrect info</span>
+    </div>
+
+    <div style="height:40px;"></div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab-item active">
+      <div class="tab-icon">T</div>
+      <span>Today</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">E</div>
+      <span>Explore</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">V</div>
+      <span>Events</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">B</div>
+      <span>Book</span>
+    </div>
+    <div class="tab-item">
+      <div class="tab-icon">M</div>
+      <span>More</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== SCREEN 22: UU HELPER — PREFILLED DEMO ==================== -->
+<div class="screen-wrapper">
+<div class="screen-label">Screen 22 &mdash; UU Helper (Demo)</div>
+<div class="phone-frame">
+  <div class="chat-fullscreen">
+    <!-- Header — Pioneer mascot redesign -->
+    <div style="padding:0; background:linear-gradient(180deg, #1E0810 0%, #1A1A21 100%); border-bottom:1px solid rgba(200,16,46,0.2); position:relative; overflow:hidden;">
+
+      <!-- Status bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 24px 0; font-size:14px; font-weight:600; position:relative; z-index:2;">
+        <span>9:41</span>
+        <div style="display:flex; gap:5px; align-items:center; font-size:11px;">
+          <span>&#9679;</span><span>&#9679;</span><span>&#9679;</span>
+        </div>
+      </div>
+
+      <!-- Subtle red glow behind mascot -->
+      <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:160px; height:100px; background:radial-gradient(ellipse, rgba(200,16,46,0.18) 0%, transparent 70%); pointer-events:none;"></div>
+
+      <!-- Header content row -->
+      <div style="display:flex; align-items:center; padding:10px 16px 14px; gap:12px; position:relative; z-index:2;">
+
+        <!-- Pioneer mascot avatar -->
+        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(145deg,#C8102E,#8B0B1E); border:2px solid rgba(255,215,0,0.35); box-shadow:0 4px 16px rgba(200,16,46,0.45); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 56 Q18 44 32 42 Q46 44 46 56 Z" fill="#C8102E"/>
+            <path d="M25 56 Q25 47 32 46 Q39 47 39 56 Z" fill="#fff" opacity="0.15"/>
+            <path d="M32 47 L33.2 50.8 L37 50.8 L34 53.2 L35.2 57 L32 54.8 L28.8 57 L30 53.2 L27 50.8 L30.8 50.8 Z" fill="#fff" opacity="0.9"/>
+            <ellipse cx="32" cy="28" rx="16" ry="17" fill="#1A1A1A"/>
+            <ellipse cx="27" cy="20" rx="5" ry="7" fill="#2E2E2E" opacity="0.6"/>
+            <path d="M32 11 Q29 5 26 4 Q28 9 27 12" fill="#1A1A1A"/>
+            <path d="M32 11 Q32 4 30 2 Q31 7 30 11" fill="#252525"/>
+            <path d="M32 11 Q35 5 38 4 Q36 9 37 12" fill="#C8102E"/>
+            <ellipse cx="35" cy="27" rx="9" ry="9.5" fill="#fff"/>
+            <path d="M22 24 Q29 21 44 24 Q44 29 38 30 Q35 31 32 30 Q26 30 22 28 Z" fill="#1A1A1A"/>
+            <ellipse cx="35" cy="27" rx="7" ry="7.5" fill="#fff"/>
+            <circle cx="35" cy="27" r="4.5" fill="#1A1A1A"/>
+            <circle cx="36.5" cy="25.5" r="1.8" fill="#fff"/>
+            <circle cx="33.5" cy="29" r="0.8" fill="#fff" opacity="0.4"/>
+            <path d="M24 32 Q20 36 19 40 Q23 38 27 37 Q28 34 26 32 Z" fill="#C8102E"/>
+            <path d="M24 34 Q21 38 20 41 Q23 40 26 39 Q27 37 25 34 Z" fill="#A50D26"/>
+            <path d="M22 34 Q20.5 36 20 38" stroke="#E84060" stroke-width="0.8" fill="none" opacity="0.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Title + status -->
+        <div style="flex:1;">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="font-size:18px; font-weight:800; color:#FFFFFF; letter-spacing:-0.4px;">UU Helper</span>
+            <!-- Online dot -->
+            <span style="width:7px; height:7px; border-radius:50%; background:#30D158; display:inline-block; box-shadow:0 0 6px rgba(48,209,88,0.7);"></span>
+          </div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.45); margin-top:2px; font-weight:500; letter-spacing:0.2px;">Cal State East Bay &bull; University Union</div>
+          <!-- "AI" badge -->
+          <div style="display:inline-flex; align-items:center; gap:4px; margin-top:5px; background:rgba(200,16,46,0.15); border:1px solid rgba(200,16,46,0.3); border-radius:6px; padding:2px 8px;">
+            <span style="font-size:9px; font-weight:800; color:#C8102E; text-transform:uppercase; letter-spacing:0.8px;">&#10024; AI-Powered &bull; Pioneers</span>
+          </div>
+        </div>
+
+        <!-- Close button -->
+        <div data-nav-screen="3" style="width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:400; color:rgba(255,255,255,0.5); cursor:pointer; flex-shrink:0;">&times;</div>
+      </div>
+    </div>
+
+    <!-- Scrollable body -->
+    <div class="chat-fs-body" style="flex:1; overflow-y:auto; padding:0 0 8px; scrollbar-width:none;">
+
+      <!-- ===== SUGGESTIONS SECTION ===== -->
+      <div style="padding:16px 16px 4px;">
+        <div style="font-size:10px; font-weight:700; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:1.2px; margin-bottom:10px;">Suggestions</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <div style="padding:9px 14px; border-radius:100px; border:1px solid var(--hairline); background:rgba(255,255,255,0.03); color:var(--text-secondary); font-size:13px; font-weight:500; line-height:1.3;">Where is Bayview Room?</div>
+          <div style="padding:9px 14px; border-radius:100px; border:1px solid var(--hairline); background:rgba(255,255,255,0.03); color:var(--text-secondary); font-size:13px; font-weight:500; line-height:1.3;">What food is open right now in the Union?</div>
+          <div style="padding:9px 14px; border-radius:100px; border:1px solid var(--hairline); background:rgba(255,255,255,0.03); color:var(--text-secondary); font-size:13px; font-weight:500; line-height:1.3;">Any GameZone tournaments this week?</div>
+          <div style="padding:9px 14px; border-radius:100px; border:1px solid var(--hairline); background:rgba(255,255,255,0.03); color:var(--text-secondary); font-size:13px; font-weight:500; line-height:1.3;">I need somewhere to charge my laptop.</div>
+          <div style="padding:9px 14px; border-radius:100px; border:1px solid var(--hairline); background:rgba(255,255,255,0.03); color:var(--text-secondary); font-size:13px; font-weight:500; line-height:1.3;">How do I reserve MPR?</div>
+        </div>
+      </div>
+
+      <!-- ===== DATE DIVIDER ===== -->
+      <div style="text-align:center; padding:20px 0 12px;">
+        <span style="font-size:11px; font-weight:600; color:var(--text-tertiary); letter-spacing:0.3px; background:var(--bg); padding:4px 14px; border-radius:100px; border:1px solid rgba(255,255,255,0.06);">Today</span>
+      </div>
+
+      <!-- ===== Q1: Bayview Room ===== -->
+      <!-- User bubble (RIGHT) -->
+      <div style="display:flex; justify-content:flex-end; padding:0 12px; margin-bottom:6px;">
+        <div style="max-width:78%; padding:12px 16px; background:var(--brand-red); border-radius:20px 20px 6px 20px; font-size:14px; line-height:1.5; color:#fff; box-shadow:0 2px 12px rgba(200,16,46,0.25);">
+          Where is Bayview Room?
+        </div>
+      </div>
+      <!-- AI response card (LEFT) -->
+      <div style="display:flex; justify-content:flex-start; padding:0 12px; margin-bottom:22px;">
+        <div style="max-width:88%; background:#16161D; border:1px solid rgba(255,255,255,0.08); border-radius:6px 20px 20px 20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.3);">
+          <!-- Location header badge -->
+          <div style="padding:12px 14px 0;">
+            <div style="display:inline-flex; align-items:center; gap:5px; background:rgba(200,16,46,0.1); border:1px solid rgba(200,16,46,0.2); border-radius:8px; padding:5px 10px;">
+              <span style="font-size:13px;">&#128205;</span>
+              <span style="font-size:11px; font-weight:700; color:var(--brand-red); letter-spacing:0.3px;">LOCATION FOUND</span>
+            </div>
+          </div>
+          <!-- Content -->
+          <div style="padding:10px 14px 12px; font-size:14px; line-height:1.65; color:var(--text-primary);">
+            <strong>Bayview Room</strong> is on <strong>Floor 2</strong> of the South (New) University Union.<br>
+            <span style="color:var(--text-secondary);">Near SLIC and The Gallery &mdash; look for signage past the elevator lobby.</span>
+            <!-- Mini location card -->
+            <div style="margin-top:10px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+              <div style="width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg, #1a1a2e, #2a2a3e); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;">&#127970;</div>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary);">South University Union</div>
+                <div style="font-size:11px; color:var(--text-tertiary); margin-top:1px;">Floor 2 &bull; Room capacity: 60</div>
+              </div>
+              <div style="font-size:16px; color:var(--text-tertiary);">&#8250;</div>
+            </div>
+          </div>
+          <!-- Action buttons -->
+          <div style="border-top:1px solid rgba(255,255,255,0.06); padding:10px 14px 12px; display:flex; gap:8px;">
+            <div data-nav-screen="11" style="flex:1; padding:10px 0; background:var(--brand-red); color:#fff; border-radius:12px; font-size:13px; font-weight:700; text-align:center; box-shadow:0 3px 12px rgba(200,16,46,0.3); display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#128204; Open Bayview Room</div>
+            <div data-nav-screen="17" style="flex:1; padding:10px 0; background:transparent; color:var(--brand-red); border:1px solid rgba(255,255,255,0.1); border-radius:12px; font-size:13px; font-weight:600; text-align:center; display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#129517; Take Me There</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Q2: Food ===== -->
+      <!-- User bubble (RIGHT) -->
+      <div style="display:flex; justify-content:flex-end; padding:0 12px; margin-bottom:6px;">
+        <div style="max-width:78%; padding:12px 16px; background:var(--brand-red); border-radius:20px 20px 6px 20px; font-size:14px; line-height:1.5; color:#fff; box-shadow:0 2px 12px rgba(200,16,46,0.25);">
+          What food is open right now in the Union?
+        </div>
+      </div>
+      <!-- AI response card (LEFT) -->
+      <div style="display:flex; justify-content:flex-start; padding:0 12px; margin-bottom:22px;">
+        <div style="max-width:88%; background:#16161D; border:1px solid rgba(255,255,255,0.08); border-radius:6px 20px 20px 20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.3);">
+          <!-- Dining header badge -->
+          <div style="padding:12px 14px 0;">
+            <div style="display:inline-flex; align-items:center; gap:5px; background:rgba(48,209,88,0.1); border:1px solid rgba(48,209,88,0.2); border-radius:8px; padding:5px 10px;">
+              <span style="font-size:13px;">&#127860;</span>
+              <span style="font-size:11px; font-weight:700; color:var(--green); letter-spacing:0.3px;">DINING &bull; OPEN NOW</span>
+            </div>
+          </div>
+          <!-- Content with venue list -->
+          <div style="padding:10px 14px 4px; font-size:14px; line-height:1.5; color:var(--text-primary);">
+            Here are dining spots to check right now:
+          </div>
+          <!-- North UU venues -->
+          <div style="padding:0 14px; margin-bottom:4px;">
+            <div style="font-size:10px; font-weight:700; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; padding-top:6px;">North Union</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:8px 10px;">
+                <span style="font-size:16px;">&#127790;</span>
+                <span style="font-size:13px; font-weight:600; color:var(--text-primary); flex:1;">Taco Bell Express</span>
+                <span style="font-size:10px; font-weight:600; color:var(--green); background:rgba(48,209,88,0.12); padding:3px 8px; border-radius:6px;">Open</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:8px 10px;">
+                <span style="font-size:16px;">&#127828;</span>
+                <span style="font-size:13px; font-weight:600; color:var(--text-primary); flex:1;">Wild Blue &bull; Fry Shack</span>
+                <span style="font-size:10px; font-weight:600; color:var(--green); background:rgba(48,209,88,0.12); padding:3px 8px; border-radius:6px;">Open</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:8px 10px;">
+                <span style="font-size:16px;">&#128722;</span>
+                <span style="font-size:13px; font-weight:600; color:var(--text-primary); flex:1;">The Market</span>
+                <span style="font-size:10px; font-weight:600; color:var(--green); background:rgba(48,209,88,0.12); padding:3px 8px; border-radius:6px;">Open</span>
+              </div>
+            </div>
+          </div>
+          <!-- South UU venues -->
+          <div style="padding:0 14px 10px;">
+            <div style="font-size:10px; font-weight:700; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; padding-top:8px;">South Union</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:8px 10px;">
+                <span style="font-size:16px;">&#127843;</span>
+                <span style="font-size:13px; font-weight:600; color:var(--text-primary); flex:1;">Panda Express</span>
+                <span style="font-size:10px; font-weight:600; color:var(--green); background:rgba(48,209,88,0.12); padding:3px 8px; border-radius:6px;">Open</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:8px 10px;">
+                <span style="font-size:16px;">&#129385;</span>
+                <span style="font-size:13px; font-weight:600; color:var(--text-primary); flex:1;">Halal Bites of Chicago</span>
+                <span style="font-size:10px; font-weight:600; color:var(--green); background:rgba(48,209,88,0.12); padding:3px 8px; border-radius:6px;">Open</span>
+              </div>
+            </div>
+          </div>
+          <div style="padding:0 14px 10px; font-size:12px; color:var(--text-tertiary);">
+            Hours can change &mdash; the Dining tab stays up to date.
+          </div>
+          <!-- Action buttons -->
+          <div style="border-top:1px solid rgba(255,255,255,0.06); padding:10px 14px 12px; display:flex; gap:8px;">
+            <div data-nav-screen="5" style="flex:1; padding:10px 0; background:var(--brand-red); color:#fff; border-radius:12px; font-size:13px; font-weight:700; text-align:center; box-shadow:0 3px 12px rgba(200,16,46,0.3); display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#127860; Open Dining</div>
+            <div data-nav-screen="5" style="flex:1; padding:10px 0; background:transparent; color:var(--brand-red); border:1px solid rgba(255,255,255,0.1); border-radius:12px; font-size:13px; font-weight:600; text-align:center; display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#128196; View Menus &amp; Hours</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Q3: GameZone ===== -->
+      <!-- User bubble (RIGHT) -->
+      <div style="display:flex; justify-content:flex-end; padding:0 12px; margin-bottom:6px;">
+        <div style="max-width:78%; padding:12px 16px; background:var(--brand-red); border-radius:20px 20px 6px 20px; font-size:14px; line-height:1.5; color:#fff; box-shadow:0 2px 12px rgba(200,16,46,0.25);">
+          Any GameZone tournaments this week?
+        </div>
+      </div>
+      <!-- AI response card (LEFT) -->
+      <div style="display:flex; justify-content:flex-start; padding:0 12px; margin-bottom:22px;">
+        <div style="max-width:88%; background:#16161D; border:1px solid rgba(255,255,255,0.08); border-radius:6px 20px 20px 20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.3);">
+          <!-- Events header badge -->
+          <div style="padding:12px 14px 0;">
+            <div style="display:inline-flex; align-items:center; gap:5px; background:rgba(255,214,10,0.1); border:1px solid rgba(255,214,10,0.2); border-radius:8px; padding:5px 10px;">
+              <span style="font-size:13px;">&#127918;</span>
+              <span style="font-size:11px; font-weight:700; color:var(--yellow); letter-spacing:0.3px;">GAMEZONE EVENTS</span>
+            </div>
+          </div>
+          <div style="padding:10px 14px 4px; font-size:14px; line-height:1.6; color:var(--text-primary);">
+            GameZone hosts tournaments and weekly events during the term. Here's what's coming up:
+          </div>
+          <!-- Event preview cards -->
+          <div style="padding:4px 14px 10px; display:flex; flex-direction:column; gap:6px;">
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-size:13px; font-weight:700; color:var(--text-primary);">&#127918; Smash Bros. Tournament</div>
+                  <div style="font-size:11px; color:var(--text-tertiary); margin-top:2px;">Wednesday &bull; 5:00 PM &bull; Free entry</div>
+                </div>
+                <div style="font-size:10px; font-weight:700; color:var(--yellow); background:rgba(255,214,10,0.12); padding:3px 8px; border-radius:6px;">RSVP</div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-size:13px; font-weight:700; color:var(--text-primary);">&#127921; Pool Night</div>
+                  <div style="font-size:11px; color:var(--text-tertiary); margin-top:2px;">Thursday &bull; 6:00 PM &bull; Drop-in</div>
+                </div>
+                <div style="font-size:10px; font-weight:700; color:var(--green); background:rgba(48,209,88,0.12); padding:3px 8px; border-radius:6px;">Open</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:0 14px 10px; font-size:12px; color:var(--text-tertiary);">
+            RSVP options appear when available. Check the full schedule for more.
+          </div>
+          <!-- Action buttons -->
+          <div style="border-top:1px solid rgba(255,255,255,0.06); padding:10px 14px 12px; display:flex; gap:8px;">
+            <div data-nav-screen="12" style="flex:1; padding:10px 0; background:var(--brand-red); color:#fff; border-radius:12px; font-size:13px; font-weight:700; text-align:center; box-shadow:0 3px 12px rgba(200,16,46,0.3); display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#127918; Open GameZone</div>
+            <div data-nav-screen="7" style="flex:1; padding:10px 0; background:transparent; color:var(--brand-red); border:1px solid rgba(255,255,255,0.1); border-radius:12px; font-size:13px; font-weight:600; text-align:center; display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#128197; This Week</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Q4: Charging ===== -->
+      <!-- User bubble (RIGHT) -->
+      <div style="display:flex; justify-content:flex-end; padding:0 12px; margin-bottom:6px;">
+        <div style="max-width:78%; padding:12px 16px; background:var(--brand-red); border-radius:20px 20px 6px 20px; font-size:14px; line-height:1.5; color:#fff; box-shadow:0 2px 12px rgba(200,16,46,0.25);">
+          I need somewhere to charge my laptop.
+        </div>
+      </div>
+      <!-- AI response card (LEFT) -->
+      <div style="display:flex; justify-content:flex-start; padding:0 12px; margin-bottom:22px;">
+        <div style="max-width:88%; background:#16161D; border:1px solid rgba(255,255,255,0.08); border-radius:6px 20px 20px 20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.3);">
+          <!-- Charging header badge -->
+          <div style="padding:12px 14px 0;">
+            <div style="display:inline-flex; align-items:center; gap:5px; background:rgba(255,159,10,0.1); border:1px solid rgba(255,159,10,0.2); border-radius:8px; padding:5px 10px;">
+              <span style="font-size:13px;">&#9889;</span>
+              <span style="font-size:11px; font-weight:700; color:var(--orange); letter-spacing:0.3px;">CHARGING STATIONS</span>
+            </div>
+          </div>
+          <div style="padding:10px 14px 4px; font-size:14px; line-height:1.6; color:var(--text-primary);">
+            Charging stations are available across both Union buildings. Nearest options:
+          </div>
+          <!-- Location list -->
+          <div style="padding:4px 14px 10px; display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px;">
+              <div style="width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg, rgba(255,159,10,0.15), rgba(255,159,10,0.05)); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">&#9889;</div>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary);">North UU &mdash; Floor 1 Lounge</div>
+                <div style="font-size:11px; color:var(--text-tertiary); margin-top:1px;">8 outlets &bull; USB-C &bull; Near Taco Bell</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px;">
+              <div style="width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg, rgba(255,159,10,0.15), rgba(255,159,10,0.05)); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">&#9889;</div>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary);">South UU &mdash; Floor 2 Study</div>
+                <div style="font-size:11px; color:var(--text-tertiary); margin-top:1px;">12 outlets &bull; USB-A/C &bull; Near Bayview</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px;">
+              <div style="width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg, rgba(255,159,10,0.15), rgba(255,159,10,0.05)); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">&#9889;</div>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary);">South UU &mdash; Floor 1 Lobby</div>
+                <div style="font-size:11px; color:var(--text-tertiary); margin-top:1px;">6 outlets &bull; USB-C &bull; Near entrance</div>
+              </div>
+            </div>
+          </div>
+          <!-- Action buttons -->
+          <div style="border-top:1px solid rgba(255,255,255,0.06); padding:10px 14px 12px; display:flex; gap:8px;">
+            <div data-nav-screen="15" style="flex:1; padding:10px 0; background:var(--brand-red); color:#fff; border-radius:12px; font-size:13px; font-weight:700; text-align:center; box-shadow:0 3px 12px rgba(200,16,46,0.3); display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#9889; Open Charging Map</div>
+            <div data-nav-screen="17" style="flex:1; padding:10px 0; background:transparent; color:var(--brand-red); border:1px solid rgba(255,255,255,0.1); border-radius:12px; font-size:13px; font-weight:600; text-align:center; display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#129517; Take Me There</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Q5: Reserve MPR ===== -->
+      <!-- User bubble (RIGHT) -->
+      <div style="display:flex; justify-content:flex-end; padding:0 12px; margin-bottom:6px;">
+        <div style="max-width:78%; padding:12px 16px; background:var(--brand-red); border-radius:20px 20px 6px 20px; font-size:14px; line-height:1.5; color:#fff; box-shadow:0 2px 12px rgba(200,16,46,0.25);">
+          How do I reserve MPR?
+        </div>
+      </div>
+      <!-- AI response card (LEFT) -->
+      <div style="display:flex; justify-content:flex-start; padding:0 12px; margin-bottom:22px;">
+        <div style="max-width:88%; background:#16161D; border:1px solid rgba(255,255,255,0.08); border-radius:6px 20px 20px 20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.3);">
+          <!-- Booking header badge -->
+          <div style="padding:12px 14px 0;">
+            <div style="display:inline-flex; align-items:center; gap:5px; background:rgba(200,16,46,0.1); border:1px solid rgba(200,16,46,0.2); border-radius:8px; padding:5px 10px;">
+              <span style="font-size:13px;">&#128203;</span>
+              <span style="font-size:11px; font-weight:700; color:var(--brand-red); letter-spacing:0.3px;">ROOM BOOKING</span>
+            </div>
+          </div>
+          <div style="padding:10px 14px 4px; font-size:14px; line-height:1.6; color:var(--text-primary);">
+            <strong>MPR</strong> (Multipurpose Room) is on Floor 1 of the South Union. Booking depends on who you are:
+          </div>
+          <!-- Booking options list -->
+          <div style="padding:4px 14px 10px; display:flex; flex-direction:column; gap:6px;">
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+              <div style="width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg, rgba(200,16,46,0.15), rgba(200,16,46,0.05)); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">&#127891;</div>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Student Organization</div>
+                <div style="font-size:11px; color:var(--text-tertiary); margin-top:1px;">Book through BaySync or visit SLIC</div>
+              </div>
+              <div style="font-size:16px; color:var(--text-tertiary);">&#8250;</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+              <div style="width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg, rgba(200,16,46,0.15), rgba(200,16,46,0.05)); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">&#128188;</div>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Faculty / Staff</div>
+                <div style="font-size:11px; color:var(--text-tertiary); margin-top:1px;">Reserve via 25Live system</div>
+              </div>
+              <div style="font-size:16px; color:var(--text-tertiary);">&#8250;</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+              <div style="width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg, rgba(200,16,46,0.15), rgba(200,16,46,0.05)); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">&#127760;</div>
+              <div style="flex:1;">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary);">Guest / External</div>
+                <div style="font-size:11px; color:var(--text-tertiary); margin-top:1px;">Submit an inquiry form online</div>
+              </div>
+              <div style="font-size:16px; color:var(--text-tertiary);">&#8250;</div>
+            </div>
+          </div>
+          <!-- Action buttons -->
+          <div style="border-top:1px solid rgba(255,255,255,0.06); padding:10px 14px 12px; display:flex; gap:8px;">
+            <div data-nav-screen="9" style="flex:1; padding:10px 0; background:var(--brand-red); color:#fff; border-radius:12px; font-size:13px; font-weight:700; text-align:center; box-shadow:0 3px 12px rgba(200,16,46,0.3); display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#128203; Start MPR Booking</div>
+            <div data-nav-screen="10" style="flex:1; padding:10px 0; background:transparent; color:var(--brand-red); border:1px solid rgba(255,255,255,0.1); border-radius:12px; font-size:13px; font-weight:600; text-align:center; display:flex; align-items:center; justify-content:center; gap:4px; cursor:pointer;">&#128065; View MPR Details</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:16px;"></div>
+    </div>
+
+    <!-- Composer (disabled for demo) -->
+    <div style="background:var(--surface2); border-top:1px solid var(--hairline);">
+      <div style="display:flex; align-items:center; gap:10px; padding:10px 16px 6px;">
+        <div style="flex:1; background:var(--surface1); border:1px solid var(--hairline); border-radius:22px; padding:11px 16px; font-size:14px; color:var(--text-tertiary); opacity:0.5;">Ask about the Union&hellip;</div>
+        <div style="width:38px; height:38px; border-radius:50%; background:var(--brand-red); display:flex; align-items:center; justify-content:center; opacity:0.35; flex-shrink:0; box-shadow:0 2px 10px rgba(200,16,46,0.15);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </div>
+      </div>
+      <div style="text-align:center; padding:2px 0 22px; font-size:10px; font-weight:500; color:var(--text-tertiary); letter-spacing:0.3px; opacity:0.7;">Demo view &mdash; prefilled responses.</div>
+    </div>
+  </div>
+</div>
+</div>
+
 </div><!-- end screen-grid -->
 
-<div style="text-align:center; padding:60px 20px 40px; color:var(--text-tertiary); font-size:13px;">
-  University Union Hub &mdash; CSUEB &mdash; 17 Screen Mockups &mdash; Dark Mode iOS Design System
+<!-- Progress dots (shown in flow mode) -->
+<div id="flow-dots"></div>
+
+<div class="page-footer-note" style="text-align:center; padding:60px 20px 40px; color:var(--text-tertiary); font-size:13px;">
+  University Union Hub &mdash; CSUEB &mdash; 22 Screen Mockups &mdash; Dark Mode iOS Design System
 </div>
+
+<!-- View toggle button -->
+<button id="view-toggle" onclick="toggleView()">⊞ Grid View</button>
 
 <script>
 function switchBVTab(btn, panelId) {
@@ -3278,6 +4572,218 @@ function toggleFloor(btn) {
     }, 100);
   }
 }
+
+/* ========== FLOW NAVIGATION ========== */
+var flowMode = false;
+var flowIdx = 0;
+var flowWrappers = [];
+var flowLabels = [];
+var flowNavWired = false;
+
+// Tab → screen index mapping
+var tabScreenMap = { 'T': 3, 'E': 6, 'V': 7, 'B': 9, 'M': 15 };
+
+// List-row click → screen index (by keyword in title)
+var listNavMap = [
+  { keyword: 'North University Union', screen: 4 },
+  { keyword: 'South University Union', screen: 5 },
+  { keyword: 'GameZone', screen: 12 },
+  { keyword: 'Bay View', screen: 11 },
+  { keyword: 'Bay view', screen: 11 },
+  { keyword: 'Room 311', screen: 10 },
+  { keyword: '311', screen: 10 },
+];
+
+function buildDots() {
+  var dotsEl = document.getElementById('flow-dots');
+  dotsEl.innerHTML = '';
+  flowWrappers.forEach(function(_, i) {
+    var d = document.createElement('div');
+    d.className = 'flow-dot' + (i === flowIdx ? ' active' : '');
+    dotsEl.appendChild(d);
+  });
+}
+
+function updateDots() {
+  var dots = document.querySelectorAll('.flow-dot');
+  dots.forEach(function(d, i) {
+    d.classList.toggle('active', i === flowIdx);
+  });
+}
+
+function updateFlowHeader() {
+  document.getElementById('flow-screen-label').textContent = flowLabels[flowIdx] || '';
+  document.getElementById('flow-screen-counter').textContent = (flowIdx + 1) + ' / ' + flowWrappers.length;
+  updateDots();
+}
+
+function goToScreen(toIdx) {
+  if (toIdx < 0 || toIdx >= flowWrappers.length || toIdx === flowIdx) return;
+
+  var direction = toIdx > flowIdx ? 'forward' : 'back';
+  var fromWrapper = flowWrappers[flowIdx];
+  var toWrapper = flowWrappers[toIdx];
+
+  // Reset scroll on incoming screen
+  var toContent = toWrapper.querySelector('.screen-content');
+  if (toContent) toContent.scrollTop = 0;
+
+  // Position incoming off-screen instantly (no transition)
+  toWrapper.style.transition = 'none';
+  toWrapper.style.transform = direction === 'forward' ? 'translateX(100%)' : 'translateX(-30%)';
+
+  // Force reflow
+  toWrapper.getBoundingClientRect();
+
+  // Now animate both
+  requestAnimationFrame(function() {
+    fromWrapper.style.transition = 'transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    fromWrapper.style.transform = direction === 'forward' ? 'translateX(-30%)' : 'translateX(100%)';
+
+    toWrapper.style.transition = 'transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    toWrapper.style.transform = 'translateX(0)';
+
+    flowIdx = toIdx;
+    updateFlowHeader();
+  });
+}
+
+function wireNavButtons() {
+  if (flowNavWired) return;
+  flowNavWired = true;
+
+  flowWrappers.forEach(function(wrapper, idx) {
+    // Forward: .btn-red (except those inside tab bars or sheets)
+    wrapper.querySelectorAll('.btn-red').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        if (!flowMode) return;
+        goToScreen(idx + 1);
+      });
+    });
+
+    // Back: .back-nav
+    wrapper.querySelectorAll('.back-nav').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        if (!flowMode) return;
+        goToScreen(idx - 1);
+      });
+    });
+
+    // Tab bar navigation
+    wrapper.querySelectorAll('.tab-item').forEach(function(tab) {
+      var letter = (tab.querySelector('.tab-icon') || {}).textContent || '';
+      letter = letter.trim();
+      if (tabScreenMap.hasOwnProperty(letter)) {
+        tab.style.cursor = 'pointer';
+        tab.addEventListener('click', function(e) {
+          if (!flowMode) return;
+          goToScreen(tabScreenMap[letter]);
+        });
+      }
+    });
+
+    // List-row navigation (by text match)
+    wrapper.querySelectorAll('.list-row').forEach(function(row) {
+      var title = (row.querySelector('.row-title') || {}).textContent || '';
+      listNavMap.forEach(function(entry) {
+        if (title.indexOf(entry.keyword) !== -1) {
+          row.style.cursor = 'pointer';
+          row.addEventListener('click', function(e) {
+            if (!flowMode) return;
+            goToScreen(entry.screen);
+          });
+        }
+      });
+    });
+
+    // Floating CTA
+    wrapper.querySelectorAll('.floating-cta').forEach(function(cta) {
+      cta.style.cursor = 'pointer';
+      cta.addEventListener('click', function(e) {
+        if (!flowMode) return;
+        goToScreen(idx + 1);
+      });
+    });
+
+    // data-nav-screen elements (any element with an explicit target screen index)
+    wrapper.querySelectorAll('[data-nav-screen]').forEach(function(el) {
+      var target = parseInt(el.getAttribute('data-nav-screen'), 10);
+      el.addEventListener('click', function(e) {
+        if (!flowMode) return;
+        e.stopPropagation();
+        goToScreen(target);
+      });
+    });
+  });
+}
+
+function enterFlowMode() {
+  flowMode = true;
+  document.body.classList.add('flow-mode');
+  document.getElementById('view-toggle').textContent = '⊞ Grid View';
+
+  // Position all screens
+  flowWrappers.forEach(function(wrapper, i) {
+    wrapper.style.transition = 'none';
+    wrapper.style.transform = i === flowIdx ? 'translateX(0)' : 'translateX(100%)';
+  });
+
+  buildDots();
+  updateFlowHeader();
+  wireNavButtons();
+}
+
+function exitFlowMode() {
+  flowMode = false;
+  document.body.classList.remove('flow-mode');
+  document.getElementById('view-toggle').textContent = '▶ Flow Mode';
+
+  // Reset transforms
+  flowWrappers.forEach(function(wrapper) {
+    wrapper.style.transition = '';
+    wrapper.style.transform = '';
+  });
+}
+
+function toggleView() {
+  if (flowMode) exitFlowMode();
+  else enterFlowMode();
+}
+
+/* Restroom picker logic */
+function selectRestroom(el) {
+  var allOpts = document.querySelectorAll('.restroom-option');
+  allOpts.forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  var btn = document.getElementById('restroom-take-me-btn');
+  if (btn) {
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+    btn.style.cursor = 'pointer';
+  }
+}
+
+/* Landmark picker logic */
+function selectLandmark(el) {
+  var allBtns = document.querySelectorAll('.landmark-btn');
+  allBtns.forEach(function(b) { b.classList.remove('selected'); });
+  el.classList.add('selected');
+  var btn = document.getElementById('start-directions-btn');
+  if (btn) {
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+    btn.style.cursor = 'pointer';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  flowWrappers = Array.from(document.querySelectorAll('.screen-wrapper'));
+  flowLabels = flowWrappers.map(function(w) {
+    var lbl = w.querySelector('.screen-label');
+    return lbl ? lbl.textContent.replace(/^Screen \d+ — /, '').replace(/^Screen \d+ &mdash; /, '') : '';
+  });
+  enterFlowMode();
+});
 </script>
 </body>
 </html>
